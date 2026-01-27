@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des projets - TaskLinker
+{% endblock %}
+
+{% block nav %}
+	<nav>
+		<a href="index.html" id="logo">
+			<img src="{{ asset('img/logo.png') }}" alt="Logo TaskLinker"/>
+		</a>
+
+		<ul id="main-menu">
+			<li class="active">
+				<a href="index.html">
+					<i class="fa-solid fa-list-check"></i>
+					Projets
+				</a>
+			</li>
+
+			<li>
+				<a href="employes.html">
+					<i class="fa-regular fa-user"></i>
+					Équipe
+				</a>
+			</li>
+		</ul>
+	</nav>
+{% endblock %}
+
+{% block body %}
+	<header>
+		<div id="current-user"></div>
+		<div id="title-page">
+			<h1>Projets</h1>
+		</div>
+	</header>
+
+	<div id="content">
+		<div id="projects-container">
+			<article class="card-project">
+				<a href="projet.html">
+					<h2>TaskLinker</h2>
+				</a>
+				<div class="card-project-icons">
+					<a href="projet-edit.html">
+						<i class="fa-solid fa-pen"></i>
+					</a>
+					<a href="#">
+						<i class="fa-solid fa-trash"></i>
+					</a>
+				</div>
+			</article>
+
+			<article class="card-project">
+				<a href="projet.html">
+					<h2>Site vitrine Les Soeurs Marchand</h2>
+				</a>
+				<div class="card-project-icons">
+					<a href="projet-edit.html">
+						<i class="fa-solid fa-pen"></i>
+					</a>
+					<a href="#">
+						<i class="fa-solid fa-trash"></i>
+					</a>
+				</div>
+			</article>
+
+			<article class="card-project">
+				<a href="projet-add.html">
+					<i class="fa-solid fa-circle-plus add-project-icon"></i>
+					<h2>Ajouter un projet</h2>
+				</a>
+			</article>
+		</div>
+	</div>
+{% endblock %}
