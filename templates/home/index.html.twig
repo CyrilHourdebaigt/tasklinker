@@ -37,36 +37,24 @@
 
 	<div id="content">
 		<div id="projects-container">
-			<article class="card-project">
-				<a href="projet.html">
-					<h2>TaskLinker</h2>
-				</a>
-				<div class="card-project-icons">
-					<a href="projet-edit.html">
-						<i class="fa-solid fa-pen"></i>
-					</a>
+			{% for projet in projets %}
+				<article class="card-project">
 					<a href="#">
-						<i class="fa-solid fa-trash"></i>
+						<h2>{{ projet.titre }}</h2>
 					</a>
-				</div>
-			</article>
+					<div class="card-project-icons">
+						<a href="#">
+							<i class="fa-solid fa-pen"></i>
+						</a>
+						<a href="#">
+							<i class="fa-solid fa-trash"></i>
+						</a>
+					</div>
+				</article>
+			{% endfor %}
 
 			<article class="card-project">
-				<a href="projet.html">
-					<h2>Site vitrine Les Soeurs Marchand</h2>
-				</a>
-				<div class="card-project-icons">
-					<a href="projet-edit.html">
-						<i class="fa-solid fa-pen"></i>
-					</a>
-					<a href="#">
-						<i class="fa-solid fa-trash"></i>
-					</a>
-				</div>
-			</article>
-
-			<article class="card-project">
-				<a href="projet-add.html">
+				<a href="#">
 					<i class="fa-solid fa-circle-plus add-project-icon"></i>
 					<h2>Ajouter un projet</h2>
 				</a>
