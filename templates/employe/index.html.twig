@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des employés - TaskLinker{% endblock %}
+{% block title %}Liste des employés - TaskLinker
+{% endblock %}
 
 {% block body %}
 	<header>
@@ -30,7 +31,8 @@
 								</div>
 
 								<div class="employee-coords">
-									<strong>{{ employe.prenom }} {{ employe.nom }}</strong>
+									<strong>{{ employe.prenom }}
+										{{ employe.nom }}</strong>
 									<span>{{ employe.email }}</span>
 								</div>
 							</div>
@@ -43,10 +45,13 @@
 								Éditer
 							</a>
 
-							{# on met le lien “maquette” pour l’instant, on branchera la suppression juste après #}
-							<a class="delete-team" href="{{ path('employe_delete', { id: employe.id }) }}">
-								Supprimer
-							</a>
+							<form method="post" action="{{ path('employe_delete', { id: employe.id }) }}" onsubmit="return confirm('Confirmer la suppression ?');">
+								<input type="hidden" name="_token" value="{{ csrf_token('delete_employe_' ~ employe.id) }}">
+								<button class="delete-team">
+									Supprimer
+								</button>
+							</form>
+
 						</td>
 					</tr>
 				{% else %}
