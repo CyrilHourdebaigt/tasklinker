@@ -15,17 +15,6 @@
 
 	<div
 		id="content">
-		{# Erreurs globales (ex: CSRF, contrainte générale, etc.) #}
-		{{ form_errors(form) }}
-
-		{# Erreurs par champ #}
-		{{ form_errors(form.titre) }}
-		{{ form_errors(form.description) }}
-		{{ form_errors(form.dateLimite) }}
-		{{ form_errors(form.statut) }}
-		{{ form_errors(form.employe) }}
-
-
 		{% include 'tache/_form.html.twig' with {
             form: form,
             button_label: 'Modifier',

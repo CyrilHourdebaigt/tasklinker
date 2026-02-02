@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des employés - TaskLinker{% endblock %}
+
+{% block body %}
+	<header>
+		<div id="current-user"></div>
+		<div id="title-page">
+			<h1>Équipe</h1>
+		</div>
+	</header>
+
+	<div id="content">
+		<table id="team-container">
+			<thead>
+				<tr>
+					<th>Prénom, Nom</th>
+					<th>Statut</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for employe in employes %}
+					<tr>
+						<td>
+							<div class="employee-infos">
+								<div class="employee-avatar">
+									{{ employe.prenom|slice(0,1)|upper }}{{ employe.nom|slice(0,1)|upper }}
+								</div>
+
+								<div class="employee-coords">
+									<strong>{{ employe.prenom }} {{ employe.nom }}</strong>
+									<span>{{ employe.email }}</span>
+								</div>
+							</div>
+						</td>
+
+						<td>{{ employe.statut }}</td>
+
+						<td>
+							<a class="button button-edit-team" href="{{ path('employe_edit', { id: employe.id }) }}">
+								Éditer
+							</a>
+
+							{# on met le lien “maquette” pour l’instant, on branchera la suppression juste après #}
+							<a class="delete-team" href="{{ path('employe_delete', { id: employe.id }) }}">
+								Supprimer
+							</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="3">Aucun employé.</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
