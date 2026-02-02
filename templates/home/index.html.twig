@@ -3,30 +3,6 @@
 {% block title %}Liste des projets - TaskLinker
 {% endblock %}
 
-{% block nav %}
-	<nav>
-		<a href="index.html" id="logo">
-			<img src="{{ asset('img/logo.png') }}" alt="Logo TaskLinker"/>
-		</a>
-
-		<ul id="main-menu">
-			<li class="active">
-				<a href="index.html">
-					<i class="fa-solid fa-list-check"></i>
-					Projets
-				</a>
-			</li>
-
-			<li>
-				<a href="employes.html">
-					<i class="fa-regular fa-user"></i>
-					Équipe
-				</a>
-			</li>
-		</ul>
-	</nav>
-{% endblock %}
-
 {% block body %}
 	<header>
 		<div id="current-user"></div>
@@ -38,8 +14,9 @@
 	<div id="content">
 		<div id="projects-container">
 			{% for projet in projets %}
+
 				<article class="card-project">
-					<a href="#">
+					<a href="{{ path('projet_show', { id: projet.id }) }}">
 						<h2>{{ projet.titre }}</h2>
 					</a>
 					<div class="card-project-icons">

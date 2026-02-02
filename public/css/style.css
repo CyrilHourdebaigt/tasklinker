@@ -455,13 +455,18 @@ form ul {
     font-style: italic;
 }
 
-a.delete-task {
+.delete-task {
     color: #E14343;
     font-size: 14px;
     font-weight: 600;
     text-align: center;
     display: block;
     margin-top: 20px;
+    margin-left: 90px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
 }
 
 form .select2-container--default .select2-selection--multiple .select2-selection__choice {

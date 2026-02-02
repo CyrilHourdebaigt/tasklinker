@@ -1,0 +1,43 @@
+{{ form_start(form, {'attr': {'name': 'tache'}}) }}
+
+{{ form_row(form.titre, {
+    label: 'Titre de la tâche',
+    attr: { id: 'tache_titre' }
+}) }}
+
+{{ form_row(form.description, {
+    label: 'Description',
+    attr: { id: 'tache_description' }
+}) }}
+
+<div class="flex-form">
+    {{ form_row(form.dateLimite, {
+        label: 'Date',
+        attr: { id: 'tache_deadline' }
+    }) }}
+
+    {{ form_row(form.statut, {
+        label: 'Statut',
+        attr: { id: 'tache_statut' }
+    }) }}
+</div>
+
+{{ form_row(form.employe, {
+    label: 'Membre',
+    attr: { id: 'tache_employe' }
+}) }}
+
+<br>
+<button class="button button-submit">{{ button_label|default('Valider') }}</button>
+
+{{ form_end(form) }}
+
+{% if show_delete|default(false) %}
+    <form method="post" action="{{ path('tache_delete', { id: tache.id }) }}"
+          onsubmit="return confirm('Confirmer la suppression ?');">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete_tache_' ~ tache.id) }}">
+        <button class="delete-task">
+            Supprimer la tâche
+        </button>
+    </form>
+{% endif %}

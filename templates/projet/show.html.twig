@@ -1,0 +1,140 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ projet.titre }}
+	- TaskLinker
+{% endblock %}
+
+{% block body %}
+	<header>
+		<div id="current-user"></div>
+		<div id="title-page">
+			<div class="flex-header">
+				<h1>{{ projet.titre }}</h1>
+
+				<div class="user-list">
+					{% for employe in projet.employes %}
+						<div class="avatar">
+							{{ employe.prenom|first|upper }}{{ employe.nom|first|upper }}
+						</div>
+					{% endfor %}
+				</div>
+
+				{# Plus tard: bouton modifier projet #}
+				<a class="button" href="#">Modifier</a>
+			</div>
+		</div>
+	</header>
+
+	<div id="content">
+		<div
+			id="tasks-container">
+
+			{# To Do #}
+			<div class="task-column">
+				<h2>To Do</h2>
+				<div class="tasks-list">
+					{% for tache in tachesToDo %}
+						<a class="task" href="{{ path('tache_edit', { id: tache.id }) }}">
+							<h3>{{ tache.titre }}</h3>
+
+							{% if tache.description %}
+								<p>{{ tache.description }}</p>
+							{% endif %}
+
+							<div class="task-infos">
+								{% if tache.dateLimite %}
+									<div class="task-deadline">
+										<i class="fa-regular fa-calendar"></i>
+										{{ tache.dateLimite|date('d/m/Y') }}
+									</div>
+								{% endif %}
+
+								{% if tache.employe %}
+									<div class="mini-user">
+										{{ tache.employe.prenom|first|upper }}{{ tache.employe.nom|first|upper }}
+									</div>
+								{% endif %}
+							</div>
+						</a>
+					{% endfor %}
+
+					<a href="{{ path('tache_new', { id: projet.id }) }}" class="task-add">
+						+ Ajouter une tâche
+					</a>
+				</div>
+			</div>
+
+			{# Doing #}
+			<div class="task-column">
+				<h2>Doing</h2>
+				<div class="tasks-list">
+					{% for tache in tachesDoing %}
+						<a class="task" href="{{ path('tache_edit', { id: tache.id }) }}">
+							<h3>{{ tache.titre }}</h3>
+
+							{% if tache.description %}
+								<p>{{ tache.description }}</p>
+							{% endif %}
+
+							<div class="task-infos">
+								{% if tache.dateLimite %}
+									<div class="task-deadline">
+										<i class="fa-regular fa-calendar"></i>
+										{{ tache.dateLimite|date('d/m/Y') }}
+									</div>
+								{% endif %}
+
+								{% if tache.employe %}
+									<div class="mini-user">
+										{{ tache.employe.prenom|first|upper }}{{ tache.employe.nom|first|upper }}
+									</div>
+								{% endif %}
+							</div>
+						</a>
+					{% endfor %}
+
+					<a href="{{ path('tache_new', { id: projet.id }) }}" class="task-add">
+						+ Ajouter une tâche
+					</a>
+				</div>
+			</div>
+
+			{# Done #}
+			<div class="task-column">
+				<h2>Done</h2>
+				<div class="tasks-list">
+					{% for tache in tachesDone %}
+						<a class="task" href="{{ path('tache_edit', { id: tache.id }) }}">
+							<h3>{{ tache.titre }}</h3>
+
+							{% if tache.description %}
+								<p>{{ tache.description }}</p>
+							{% endif %}
+
+							<div class="task-infos">
+								{% if tache.dateLimite %}
+									<div class="task-deadline">
+										<i class="fa-regular fa-calendar"></i>
+										{{ tache.dateLimite|date('d/m/Y') }}
+									</div>
+								{% endif %}
+
+								{% if tache.employe %}
+									<div class="mini-user">
+										{{ tache.employe.prenom|first|upper }}{{ tache.employe.nom|first|upper }}
+									</div>
+								{% endif %}
+							</div>
+						</a>
+					{% endfor %}
+
+					<a href="{{ path('tache_new', { id: projet.id }) }}" class="task-add">
+						+ Ajouter une tâche
+					</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+{% endblock %}

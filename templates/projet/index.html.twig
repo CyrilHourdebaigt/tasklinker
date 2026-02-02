@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ projet.titre }} - TaskLinker{% endblock %}
+
+{% block body %}
+    <header>
+        <div id="title-page">
+            <h1>{{ projet.titre }}</h1>
+        </div>
+    </header>
+
+    <div id="content">
+        <h2>Tâches</h2>
+
+        <ul>
+            {% for tache in taches %}
+                <li>
+                    {{ tache.titre }} — <strong>{{ tache.statut }}</strong>
+                </li>
+            {% else %}
+                <li>Aucune tâche pour le moment.</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

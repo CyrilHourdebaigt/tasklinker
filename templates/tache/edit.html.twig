@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ tache.titre }}
+	- TaskLinker
+{% endblock %}
+
+{% block body %}
+	<header>
+		<div id="current-user"></div>
+		<div id="title-page">
+			<h1>{{ tache.titre }}</h1>
+		</div>
+	</header>
+
+	<div
+		id="content">
+		{# Erreurs globales (ex: CSRF, contrainte générale, etc.) #}
+		{{ form_errors(form) }}
+
+		{# Erreurs par champ #}
+		{{ form_errors(form.titre) }}
+		{{ form_errors(form.description) }}
+		{{ form_errors(form.dateLimite) }}
+		{{ form_errors(form.statut) }}
+		{{ form_errors(form.employe) }}
+
+
+		{% include 'tache/_form.html.twig' with {
+            form: form,
+            button_label: 'Modifier',
+            show_delete: true,
+            tache: tache
+        } %}
+	</div>
+{% endblock %}

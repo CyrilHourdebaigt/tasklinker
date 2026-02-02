@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une tâche - TaskLinker
+{% endblock %}
+
+{% block body %}
+	<header>
+		<div id="current-user"></div>
+		<div id="title-page">
+			<h1>Créer une tâche</h1>
+		</div>
+	</header>
+
+	<div id="content">
+		{% include 'tache/_form.html.twig' with {
+            form: form,
+            button_label: 'Ajouter'
+        } %}
+	</div>
+{% endblock %}
