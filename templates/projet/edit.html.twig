@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un projet - TaskLinker
+{% endblock %}
+
+{% block body %}
+	<header>
+		<div id="current-user"></div>
+		<div id="title-page">
+			<h1>Modifier le projet</h1>
+		</div>
+	</header>
+
+	<div id="content">
+		{{ form_start(form) }}
+		{{ form_row(form.titre, { label: 'Nom du projet' }) }}
+		{{ form_row(form.employes, { label: 'Inviter des membres' }) }}
+		<button class="button button-submit">Modifier</button>
+		{{ form_end(form) }}
+	</div>
+{% endblock %}

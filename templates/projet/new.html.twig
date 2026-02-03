@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un projet - TaskLinker{% endblock %}
+
+{% block body %}
+	<header>
+		<div id="current-user"></div>
+		<div id="title-page">
+			<h1>Nouveau projet</h1>
+		</div>
+	</header>
+
+	<div id="content">
+		{{ form_start(form) }}
+			{{ form_row(form.titre, { label: 'Titre du projet' }) }}
+			{{ form_row(form.employes, { label: 'Inviter des membres' }) }}
+
+			<br>
+			<button class="button button-submit">Continuer</button>
+		{{ form_end(form) }}
+	</div>
+{% endblock %}

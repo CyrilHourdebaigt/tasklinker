@@ -14,24 +14,28 @@
 	<div id="content">
 		<div id="projects-container">
 			{% for projet in projets %}
-
 				<article class="card-project">
 					<a href="{{ path('projet_show', { id: projet.id }) }}">
 						<h2>{{ projet.titre }}</h2>
 					</a>
 					<div class="card-project-icons">
-						<a href="#">
+						<a href="{{ path('projet_edit', { id: projet.id }) }}" class="project-action">
 							<i class="fa-solid fa-pen"></i>
 						</a>
-						<a href="#">
-							<i class="fa-solid fa-trash"></i>
-						</a>
+
+						<form method="post" action="{{ path('projet_archive', { id: projet.id }) }}" onsubmit="return confirm('Archiver ce projet ?');" class="project-action-form">
+							<input type="hidden" name="_token" value="{{ csrf_token('archive_projet_' ~ projet.id) }}">
+							<button type="submit" class="project-action">
+								<i class="fa-solid fa-trash"></i>
+							</button>
+						</form>
+
 					</div>
 				</article>
 			{% endfor %}
 
 			<article class="card-project">
-				<a href="#">
+				<a href="{{ path('projet_new') }}">
 					<i class="fa-solid fa-circle-plus add-project-icon"></i>
 					<h2>Ajouter un projet</h2>
 				</a>

@@ -20,8 +20,7 @@
 					{% endfor %}
 				</div>
 
-				{# Plus tard: bouton modifier projet #}
-				<a class="button" href="#">Modifier</a>
+				<a class="button" href="{{ path('projet_edit', { id: projet.id }) }}" class="project-action">Modifier</a>
 			</div>
 		</div>
 	</header>
