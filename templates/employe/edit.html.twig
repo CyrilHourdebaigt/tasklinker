@@ -1,14 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{ employe.prenom }} {{ employe.nom }} - TaskLinker
+	{{ employe.prenom }}
+	{{ employe.nom }}
+	- TaskLinker
 {% endblock %}
 
 {% block body %}
 	<header>
 		<div id="current-user"></div>
 		<div id="title-page">
-			<h1>{{ employe.prenom }} {{ employe.nom }}</h1>
+			<h1>{{ employe.prenom }}
+				{{ employe.nom }}</h1>
 		</div>
 	</header>
 

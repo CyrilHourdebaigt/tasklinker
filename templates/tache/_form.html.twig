@@ -1,3 +1,5 @@
+{# J’utilise un template partiel (_form.html.twig) pour éviter de dupliquer le code entre la création et la modification #}
+
 {{ form_start(form, {'attr': {'name': 'tache'}}) }}
 
 {{ form_row(form.titre, {
@@ -11,12 +13,12 @@
 }) }}
 
 <div class="flex-form">
-    {{ form_row(form.dateLimite, {
+	{{ form_row(form.dateLimite, {
         label: 'Date',
         attr: { id: 'tache_deadline' }
     }) }}
 
-    {{ form_row(form.statut, {
+	{{ form_row(form.statut, {
         label: 'Statut',
         attr: { id: 'tache_statut' }
     }) }}
@@ -27,17 +29,23 @@
     attr: { id: 'tache_employe' }
 }) }}
 
+{# Le bouton principal du formulaire change selon le contexte :
+    - "Ajouter" pour la création
+    - "Modifier" pour l’édition
+#}
 <br>
 <button class="button button-submit">{{ button_label|default('Valider') }}</button>
 
 {{ form_end(form) }}
 
+{# Partie suppression, j’affiche ce bouton uniquement si show_delete vaut true.
+    Cela évite d’afficher le bouton "Supprimer" lors de la création.
+#}
 {% if show_delete|default(false) %}
-    <form method="post" action="{{ path('tache_delete', { id: tache.id }) }}"
-          onsubmit="return confirm('Confirmer la suppression ?');">
-        <input type="hidden" name="_token" value="{{ csrf_token('delete_tache_' ~ tache.id) }}">
-        <button class="delete-task">
-            Supprimer la tâche
-        </button>
-    </form>
+	<form method="post" action="{{ path('tache_delete', { id: tache.id }) }}" onsubmit="return confirm('Confirmer la suppression ?');">
+		<input type="hidden" name="_token" value="{{ csrf_token('delete_tache_' ~ tache.id) }}">
+		<button class="delete-task">
+			Supprimer la tâche
+		</button>
+	</form>
 {% endif %}

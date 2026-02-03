@@ -15,27 +15,32 @@ class EmployeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+        // Champ pour le nom de l’employé
             ->add('nom', TextType::class, [
                 'required' => true,
                 'label' => 'Nom',
-                'attr' => ['id' => 'employe_nom'],
+                'attr' => ['id' => 'employe_nom'], // Id HTML pour coller à la maquette
             ])
+            // Champ pour le prénom de l’employé
             ->add('prenom', TextType::class, [
                 'required' => true,
                 'label' => 'Prenom',
                 'attr' => ['id' => 'employe_prenom'],
             ])
+            // Champ pour l’email de l’employé
             ->add('email', EmailType::class, [
                 'required' => true,
                 'label' => 'Email',
                 'attr' => ['id' => 'employe_email'],
             ])
+            // Champ pour la date d’entrée
             ->add('dateEntree', DateType::class, [
                 'required' => true,
                 'label' => "Date d'entrée",
                 'widget' => 'single_text',
                 'attr' => ['id' => 'employe_dateArrivee'],
             ])
+            // Champ pour le statut de l’employé
             ->add('statut', TextType::class, [
                 'required' => true,
                 'label' => 'Statut',
